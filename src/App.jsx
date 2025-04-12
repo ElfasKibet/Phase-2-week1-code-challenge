@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import ExpenseForm from "./components/expenseForm.jsx";
+import SearchBar from "./components/searchBar.jsx";
+import ExpenseTable from "./components/expenseTable.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [expenses, setExpenses] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleAddExpense = (expense) => {
+    setExpenses([...expenses, expense]);
+  };
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
+  const filteredExpenses = expenses.filter(
+    (expense) =>
+      expense.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      expense.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <div className="min-h-screen bg-white p-6">
+      <h1 className="text-4xl font-bold mb-2">Expense Tracker</h1>
+      <p className="text-gray-600 mb-6">
+        Start taking control of your finances.
       </p>
-    </>
-  )
-}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="md:col-span-1">
+          <ExpenseForm onAddExpense={handleAddExpense} />
+        </div>
+        <div className="md:col-span-3">
+          <SearchBar onSearch={handleSearch} />
+          <ExpenseTable expenses={filteredExpenses} />
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default App
+export default App;
