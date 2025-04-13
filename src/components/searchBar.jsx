@@ -4,7 +4,7 @@ const SearchBar = ({ onSearch }) => {
   return (
     <input
       type="text"
-      placeholder="Search expenses..."
+      placeholder="Search Expenses..."
       onChange={(e) => onSearch(e.target.value)}
       className="w-full mb-4 p-2 border rounded"
     />

@@ -35,21 +35,21 @@ const ExpenseForm = ({ onAddExpense }) => {
         name="name"
         value={formData.name}
         onChange={handleChange}
-        placeholder="Enter expense name"
+        placeholder="Name"
         className="w-full mb-2 p-2 border rounded"
       />
       <input
         name="description"
         value={formData.description}
         onChange={handleChange}
-        placeholder="Enter expense description"
+        placeholder="Description"
         className="w-full mb-2 p-2 border rounded"
       />
       <input
         name="category"
         value={formData.category}
         onChange={handleChange}
-        placeholder="Enter expense category"
+        placeholder="Category"
         className="w-full mb-2 p-2 border rounded"
       />
       <input
@@ -57,7 +57,7 @@ const ExpenseForm = ({ onAddExpense }) => {
         name="amount"
         value={formData.amount}
         onChange={handleChange}
-        placeholder="Enter expense amount"
+        placeholder="Amount"
         className="w-full mb-2 p-2 border rounded"
       />
       <input
