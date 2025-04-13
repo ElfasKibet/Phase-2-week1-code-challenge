@@ -1,12 +1,17 @@
 import React from "react";
+import "../App.css";
 
 const SearchBar = ({ onSearch }) => {
+  const handleInputChange = (e) => {
+    onSearch(e.target.value);
+  };
+
   return (
     <input
       type="text"
-      placeholder="Search Expenses..."
-      onChange={(e) => onSearch(e.target.value)}
-      className="w-full mb-4 p-2 border rounded"
+      placeholder="Search expenses..."
+      onChange={handleInputChange}
+      className="search-bar"
     />
   );
 };

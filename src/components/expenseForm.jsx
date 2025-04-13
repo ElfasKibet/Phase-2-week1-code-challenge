@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../App.css";
 
 const ExpenseForm = ({ onAddExpense }) => {
   const [formData, setFormData] = useState({
@@ -10,67 +11,67 @@ const ExpenseForm = ({ onAddExpense }) => {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name && formData.amount && formData.date) {
-      onAddExpense(formData);
-      setFormData({
-        name: "",
-        description: "",
-        category: "",
-        amount: "",
-        date: "",
-      });
-    }
+    onAddExpense(formData);
+    setFormData({
+      name: "",
+      description: "",
+      category: "",
+      amount: "",
+      date: "",
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded">
-      <h2 className="text-xl font-semibold mb-4">Add Expense</h2>
-      <input
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Name"
-        className="w-full mb-2 p-2 border rounded"
-      />
-      <input
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-        placeholder="Description"
-        className="w-full mb-2 p-2 border rounded"
-      />
-      <input
-        name="category"
-        value={formData.category}
-        onChange={handleChange}
-        placeholder="Category"
-        className="w-full mb-2 p-2 border rounded"
-      />
-      <input
-        type="number"
-        name="amount"
-        value={formData.amount}
-        onChange={handleChange}
-        placeholder="Amount"
-        className="w-full mb-2 p-2 border rounded"
-      />
-      <input
-        type="date"
-        name="date"
-        value={formData.date}
-        onChange={handleChange}
-        className="w-full mb-2 p-2 border rounded"
-      />
-      <button type="submit" className="w-full bg-black text-white p-2 rounded">
-        Submit
-      </button>
-    </form>
+    <div className="form-container">
+      <h2>Add Expense</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter expense title"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="description"
+          placeholder="Enter expense description"
+          value={formData.description}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="category"
+          placeholder="Enter category"
+          value={formData.category}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="amount"
+          placeholder="Enter amount"
+          value={formData.amount}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 
