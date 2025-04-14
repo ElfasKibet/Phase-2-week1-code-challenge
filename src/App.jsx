@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ExpenseForm from "./components/expenseForm.jsx";
-import SearchBar from "./components/searchBar.jsx";
-import ExpenseTable from "./components/expenseTable.jsx";
+import ExpenseForm from "./components/ExpenseForm.jsx";
+import SearchBar from "./components/SearchBar.jsx";
+import ExpenseTable from "./components/ExpenseTable.jsx";
 import "./App.css";
 
 const App = () => {
